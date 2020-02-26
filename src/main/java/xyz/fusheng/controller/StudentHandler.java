@@ -12,6 +12,8 @@ package xyz.fusheng.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import xyz.fusheng.Service.Impl.StudentServiceImpl;
+import xyz.fusheng.Service.StudentService;
 import xyz.fusheng.entity.Student;
 import xyz.fusheng.repository.StudentRepository;
 
@@ -21,30 +23,30 @@ import java.util.List;
 public class StudentHandler {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentService studentService;
 
     @GetMapping("/findAll")
     public List<Student> findAll(){
-        return studentRepository.findAll();
+        return studentService.findAll();
     }
 
     @GetMapping("/findById/{id}")
     public Student findById(@PathVariable("id") Long id){
-        return studentRepository.findById(id);
+        return studentService.findById(id);
     }
 
     @PostMapping("/save")
     public int save(@RequestBody Student student){
-        return studentRepository.save(student);
+        return studentService.save(student);
     }
 
     @PutMapping("/update")
     public int update(@RequestBody Student student){
-        return studentRepository.update(student);
+        return studentService.update(student);
     }
 
     @DeleteMapping("/deleteById/{id}")
     public int deleteById(@PathVariable("id") Long id){
-        return studentRepository.deleteById(id);
+        return studentService.deleteById(id);
     }
 }

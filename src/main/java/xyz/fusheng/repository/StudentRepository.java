@@ -10,10 +10,12 @@
  */
 package xyz.fusheng.repository;
 
+import org.springframework.stereotype.Repository;
 import xyz.fusheng.entity.Student;
 
 import java.util.List;
 
+@Repository
 public interface StudentRepository {
     public List<Student> findAll();
     public Student findById(Long id);
